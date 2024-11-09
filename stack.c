@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/08 13:32:09 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/09 14:19:07 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_stack(t_stack stack)
 {
 	t_list	*node;
 	int		*data;
-	
+
 	node = stack.top;
 	if (!node)
 	{
@@ -40,7 +40,7 @@ void	print_stack(t_stack stack)
 
 void	push(t_stack *stack, int n)
 {
-	int	*data;
+	int		*data;
 	t_list	*node;
 
 	data = (int *)malloc(sizeof(int));
@@ -56,7 +56,7 @@ int	*pop(t_stack *stack)
 {
 	int		*result;
 	t_list	*node;
-	
+
 	result = 0;
 	node = stack->top;
 	if (node)
@@ -64,6 +64,7 @@ int	*pop(t_stack *stack)
 		result = node->content;
 		stack->top = node->next;
 		free(node);
+		node = 0;
 		stack->size--;
 		if (!stack->size)
 			stack->bottom = 0;

@@ -1,45 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 14:51:14 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/09 13:57:53 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/09 20:17:35 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-void	swap(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
-	int	*first;
-	int	*second;
+	t_list	*node;
 
 	if (stack->size >= 2)
 	{
-		first = pop(stack);
-		second = pop(stack);
-		push(stack, *first);
-		push(stack, *second);
-		free(first);
-		free(second);
+		node = stack->bottom;
+		stack->bottom = stack->bottom->prev;
+		stack->bottom->next = 0;
+		stack->top->prev = node;
+		node->next = stack->top;
+		stack->top = node;
+		node->prev = 0;
 	}
 }
 
-void	sa(t_target *target)
+void	rra(t_target *target)
 {
-	swap(target->a);
+	reverse_rotate(target->a);
 }
 
-void	sb(t_target *target)
+void	rrb(t_target *target)
 {
-	swap(target->b);
+	reverse_rotate(target->b);
 }
 
-void	ss(t_target *target)
+void	rrr(t_target *target)
 {
-	swap(target->a);
-	swap(target->b);
+	reverse_rotate(target->a);
+	reverse_rotate(target->b);
 }
+

@@ -1,45 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   target.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 14:51:14 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/09 14:31:16 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-void	swap(t_stack *stack)
+void	init_target(t_target *target, t_stack *stack)
 {
-	int	*first;
-	int	*second;
-
-	if (stack->size >= 2)
-	{
-		first = pop(stack);
-		second = pop(stack);
-		push(stack, *first);
-		push(stack, *second);
-		free(first);
-		free(second);
-	}
+	target->a = stack;
+	target->b = (t_stack *)malloc(sizeof(t_stack));
+	init_stack(target->b);
 }
 
-void	sa(t_target *target)
+void	flush_target(t_target *target)
 {
-	swap(target->a);
+	ft_lstclear(&(target->a->top), free);
+	ft_lstclear(&(target->b->top), free);
+	free(target->a);
+	free(target->b);
 }
 
-void	sb(t_target *target)
+void	print_target(t_target target)
 {
-	swap(target->b);
-}
-
-void	ss(t_target *target)
-{
-	swap(target->a);
-	swap(target->b);
+	ft_printf("[stack a]\n");
+	print_stack(*(target.a));
+	ft_printf("[stack b]\n");
+	print_stack(*(target.b));
 }

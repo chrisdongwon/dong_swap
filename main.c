@@ -1,21 +1,35 @@
-#include "stack.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/09 13:59:37 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/09 20:19:16 by cwon             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "target.h"
 
 int	main(void)
 {
-	t_stack stack;
-	int	*data;
+	t_target	target;
+	t_stack		*stack;
 
-	init_stack(&stack);
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	init_stack(stack);
 	for (int i = 0; i < 10; i++)
-		push(&stack, i);
+		push(stack, rand() % 100 + 1);
 
-	swap(&stack);
-	rotate(&stack);
+	init_target(&target, stack);
+	print_target(target);
+	
+	pb(&target);
+	//pb(&target);
+	rr(&target);
+	print_target(target);
 
-	data = stack.bottom->content;
-	ft_printf("bottom: %d\n", *data);
-
-	print_stack(stack);
-	ft_lstclear(&stack.top, free);
+	flush_target(&target);
 	return (0);
 }

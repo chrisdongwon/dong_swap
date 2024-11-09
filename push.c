@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 14:51:14 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/09 14:52:33 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/09 20:14:24 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-void	swap(t_stack *stack)
+void	pa(t_target *target)
 {
-	int	*first;
-	int	*second;
+	int	*data;
 
-	if (stack->size >= 2)
-	{
-		first = pop(stack);
-		second = pop(stack);
-		push(stack, *first);
-		push(stack, *second);
-		free(first);
-		free(second);
-	}
+	data = pop(target->b);
+	if (data)
+		push(target->a, *data);
+	free(data);
 }
 
-void	sa(t_target *target)
+void	pb(t_target *target)
 {
-	swap(target->a);
-}
+	int	*data;
 
-void	sb(t_target *target)
-{
-	swap(target->b);
-}
-
-void	ss(t_target *target)
-{
-	swap(target->a);
-	swap(target->b);
+	data = pop(target->a);
+	if (data)
+		push(target->b, *data);
+	free(data);
 }

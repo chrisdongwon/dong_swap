@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:08 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/08 15:51:26 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/09 14:18:43 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 
 void	init_stack(t_stack *stack);
 void	print_stack(t_stack stack);
+
 void	push(t_stack *stack, int n);
 int		*pop(t_stack *stack);
 

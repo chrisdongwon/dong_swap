@@ -6,15 +6,33 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 17:50:54 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/10 20:14:07 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//	to do: duplicate check
-int	get_stack(t_stack *stack, int argc, char **argv)
+static int	is_duplicate(t_stack *stack, int n)
 {
+	t_list	*node;
+	int		*data;
+	
+	if (!stack->size)
+		return (0);
+	node = stack->top;
+	while (node)
+	{
+		data = node->content;
+		if (*data == n)
+			return (1);
+		node = node->next;
+	}
+	return (0);
+}
+
+static int	get_stack(t_stack *stack, int argc, char **argv)
+{
+	int		data;
 	size_t	i;
 
 	init_stack(stack);
@@ -23,7 +41,10 @@ int	get_stack(t_stack *stack, int argc, char **argv)
 	{
 		if (!ft_isinteger(argv[i]))
 			return (0);
-		push(stack, ft_atoi(argv[i]));
+		data = ft_atoi(argv[i]);
+		if (is_duplicate(stack, data))
+			return (0);
+		push(stack, data);
 	}
 	return (1);
 }

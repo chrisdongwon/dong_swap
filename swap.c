@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 14:51:14 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/10 13:41:54 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,19 @@ void	swap(t_stack *stack)
 
 void	sa(t_target *target)
 {
+	ft_printf("sa\n");
 	swap(target->a);
 }
 
 void	sb(t_target *target)
 {
+	ft_printf("sb\n");
 	swap(target->b);
 }
 
 void	ss(t_target *target)
 {
+	ft_printf("ss\n");
 	swap(target->a);
 	swap(target->b);
 }

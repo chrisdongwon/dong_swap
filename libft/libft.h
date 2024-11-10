@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:05:50 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 13:16:06 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/10 14:43:41 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ char	**ft_split(const char *s, char c);
 int		ft_atoi(const char *ntpr);
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
+int		ft_isinteger(const char *str);
 
 // memory functions
 void	*ft_memset(void *s, int c, size_t n);

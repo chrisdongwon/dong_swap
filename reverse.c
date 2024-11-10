@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 13:57:53 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 20:17:35 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/10 14:08:50 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,19 @@ void	reverse_rotate(t_stack *stack)
 
 void	rra(t_target *target)
 {
+	ft_printf("rra\n");
 	reverse_rotate(target->a);
 }
 
 void	rrb(t_target *target)
 {
+	ft_printf("rrb\n");
 	reverse_rotate(target->b);
 }
 
 void	rrr(t_target *target)
 {
+	ft_printf("rrr\n");
 	reverse_rotate(target->a);
 	reverse_rotate(target->b);
 }
-

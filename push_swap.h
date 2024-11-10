@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 14:52:33 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 13:43:20 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/10 13:53:19 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/10 16:24:30 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "target.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	pa(t_target *target)
-{
-	int	*data;
+# include "target.h"
 
-	data = pop(target->b);
-	if (data)
-	{
-		ft_printf("pa\n");
-		push(target->a, *data);
-	}
-	free(data);
-}
+int		get_stack(t_stack *stack, int argc, char **argv);
+void	push_swap(int argc, char **argv);
 
-void	pb(t_target *target)
-{
-	int	*data;
-
-	data = pop(target->a);
-	if (data)
-	{
-		ft_printf("pb\n");
-		push(target->b, *data);
-	}
-	free(data);
-}
+#endif

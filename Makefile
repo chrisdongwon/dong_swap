@@ -6,7 +6,7 @@
 #    By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 10:53:51 by cwon              #+#    #+#              #
-#    Updated: 2024/11/08 13:12:10 by cwon             ###   ########.fr        #
+#    Updated: 2024/11/10 17:39:19 by cwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ NAME = push_swap
 
 all: $(lib_path) $(NAME)
 
-$(lib_path):
+$(lib_path): $(lib_dir)
 	make -C $(lib_dir)
 
-$(NAME): $(obj) $(lib_path)
+$(NAME): $(src) $(obj) $(lib_path)
 	$(CC) $(CFLAGS) $(src) -o $(NAME) $(lib_path)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/09 14:19:07 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/10 16:35:23 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,13 @@ void	init_stack(t_stack *stack)
 	stack->size = 0;
 }
 
-void	print_stack(t_stack stack)
+void	flush_stack(t_stack *stack, int error)
 {
-	t_list	*node;
-	int		*data;
-
-	node = stack.top;
-	if (!node)
-	{
-		ft_printf("empty stack\n");
-		return ;
-	}
-	while (node)
-	{
-		data = node->content;
-		ft_printf("%d\n", *data);
-		node = node->next;
-	}
+	if (error)
+		ft_printf("Error\n");
+	if (stack)
+		ft_lstclear(&(stack->top), free);
+	free(stack);
 }
 
 void	push(t_stack *stack, int n)
@@ -70,4 +60,23 @@ int	*pop(t_stack *stack)
 			stack->bottom = 0;
 	}
 	return (result);
+}
+
+void	print_stack(t_stack *stack)
+{
+	t_list	*node;
+	int		*data;
+
+	node = stack->top;
+	if (!node)
+	{
+		ft_printf("empty stack\n");
+		return ;
+	}
+	while (node)
+	{
+		data = node->content;
+		ft_printf("%d\n", *data);
+		node = node->next;
+	}
 }

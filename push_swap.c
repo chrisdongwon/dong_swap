@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 20:14:07 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/11 12:33:01 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_duplicate(t_stack *stack, int n)
 {
 	t_list	*node;
 	int		*data;
-	
+
 	if (!stack->size)
 		return (0);
 	node = stack->top;
@@ -60,6 +60,7 @@ void	push_swap(int argc, char **argv)
 	target = (t_target *)malloc(sizeof(t_target));
 	if (!target || !init_target(target, stack))
 		return (flush_target(target, 1));
+	sort(target);
 	print_target(target);
 	flush_target(target, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:19 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 19:52:50 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/11 12:33:21 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,11 @@
 # include "target.h"
 
 void	push_swap(int argc, char **argv);
+
+int		is_sorted(t_target *target);
+int		*stack_to_array(t_target *target, int n);
+
+void	sort(t_target *target);
+void	sort_three(t_target *target);
 
 #endif

@@ -1,5 +1,10 @@
 {
 	"files.associations": {
-		"random": "c"
+		"random": "c",
+		"push_swap.h": "c",
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"functional": "cpp"
 	}
 }

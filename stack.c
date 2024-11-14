@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 16:35:23 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/13 13:36:26 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_stack(t_stack *stack)
 void	flush_stack(t_stack *stack, int error)
 {
 	if (error)
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	if (stack)
 		ft_lstclear(&(stack->top), free);
 	free(stack);

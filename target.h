@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:12:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 16:41:07 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/13 21:32:30 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ void	rr(t_target *target);
 void	rra(t_target *target);
 void	rrb(t_target *target);
 void	rrr(t_target *target);
+
+int		*stack_to_array(t_target *target, char choice, size_t size);
+void	array_sort(int *arr, size_t size);
 
 #endif

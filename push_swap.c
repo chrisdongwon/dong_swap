@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/11 12:33:01 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/14 14:13:44 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	push_swap(int argc, char **argv)
 	if (!target || !init_target(target, stack))
 		return (flush_target(target, 1));
 	sort(target);
-	print_target(target);
+	if (!is_sorted(target, 'a', target->a->size) || target->b->size)
+		return (flush_target(target, 1));
 	flush_target(target, 0);
 }

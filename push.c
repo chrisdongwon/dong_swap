@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:52:33 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/10 13:43:20 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/14 13:03:50 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	pa(t_target *target)
 	{
 		ft_printf("pa\n");
 		push(target->a, *data);
+		free(data);
 	}
-	free(data);
 }
 
 void	pb(t_target *target)
@@ -34,6 +34,6 @@ void	pb(t_target *target)
 	{
 		ft_printf("pb\n");
 		push(target->b, *data);
+		free(data);
 	}
-	free(data);
 }

@@ -6,13 +6,13 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/14 13:03:23 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/17 02:43:29 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-void	swap(t_stack *stack)
+static void	swap(t_stack *stack)
 {
 	int	*first;
 	int	*second;
@@ -30,19 +30,19 @@ void	swap(t_stack *stack)
 
 void	sa(t_target *target)
 {
-	ft_printf("sa\n");
 	swap(target->a);
+	push_operation(target, "sa");
 }
 
 void	sb(t_target *target)
 {
-	ft_printf("sb\n");
 	swap(target->b);
+	push_operation(target, "sb");
 }
 
 void	ss(t_target *target)
 {
-	ft_printf("ss\n");
 	swap(target->a);
 	swap(target->b);
+	push_operation(target, "ss");
 }

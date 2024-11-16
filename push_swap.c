@@ -6,13 +6,13 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/14 14:13:44 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/17 02:29:54 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_duplicate(t_stack *stack, int n)
+int	is_duplicate(t_stack *stack, int n)
 {
 	t_list	*node;
 	int		*data;
@@ -30,21 +30,45 @@ static int	is_duplicate(t_stack *stack, int n)
 	return (0);
 }
 
-static int	get_stack(t_stack *stack, int argc, char **argv)
+t_stack	*set_data(int argc, char **argv)
 {
+	t_stack	*stack;
+ 	size_t	i;
 	int		data;
-	size_t	i;
 
-	init_stack(stack);
+	stack = init_stack();
 	i = argc;
 	while (--i)
 	{
 		if (!ft_isinteger(argv[i]))
-			return (0);
+			flush_stack(stack, 1);
 		data = ft_atoi(argv[i]);
 		if (is_duplicate(stack, data))
-			return (0);
+			flush_stack(stack, 1);
 		push(stack, data);
+	}
+	return (stack);
+}
+
+int	is_sorted(t_stack *stack, size_t size)
+{
+	t_list	*node;
+	int		*data;
+	int		*next_data;
+	size_t	i;
+
+	i = 0;
+	node = stack->top;
+	while (node && i < size)
+	{
+		data = node->content;
+		if (!node->next)
+			return (1);
+		next_data = (node->next)->content;
+		if (*data > *next_data)
+			return (0);
+		node = node->next;
+		i++;
 	}
 	return (1);
 }
@@ -54,14 +78,9 @@ void	push_swap(int argc, char **argv)
 	t_stack		*stack;
 	t_target	*target;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack || !get_stack(stack, argc, argv))
-		return (flush_stack(stack, 1));
-	target = (t_target *)malloc(sizeof(t_target));
-	if (!target || !init_target(target, stack))
-		return (flush_target(target, 1));
+	stack = set_data(argc, argv);
+	target = init_target(stack);
 	sort(target);
-	if (!is_sorted(target, 'a', target->a->size) || target->b->size)
-		return (flush_target(target, 1));
-	flush_target(target, 0);
+	// post-sort optimization of sequences
+	print_sequence(target);
 }

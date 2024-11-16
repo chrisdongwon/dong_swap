@@ -6,26 +6,37 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/13 13:36:26 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/17 02:34:33 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-void	init_stack(t_stack *stack)
+void	flush_stack(t_stack *stack, int error)
 {
+	if (stack)
+	{
+		ft_lstclear(&(stack->top), free);
+		free(stack);
+	}
+	if (error)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}
+
+t_stack	*init_stack(void)
+{
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
+		flush_stack(stack, 1);
 	stack->top = 0;
 	stack->bottom = 0;
 	stack->size = 0;
-}
-
-void	flush_stack(t_stack *stack, int error)
-{
-	if (error)
-		ft_putstr_fd("Error\n", 2);
-	if (stack)
-		ft_lstclear(&(stack->top), free);
-	free(stack);
+	return (stack);
 }
 
 void	push(t_stack *stack, int n)
@@ -34,12 +45,18 @@ void	push(t_stack *stack, int n)
 	t_list	*node;
 
 	data = (int *)malloc(sizeof(int));
-	*data = n;
-	node = ft_lstnew(data);
-	ft_lstadd_front(&(stack->top), node);
-	stack->size++;
-	if (stack->size == 1)
-		stack->bottom = stack->top;
+	if (data)
+	{
+		*data = n;
+		node = ft_lstnew(data);
+		if (node)
+		{
+			ft_lstadd_front(&(stack->top), node);
+			stack->size++;
+			if (stack->size == 1)
+				stack->bottom = stack->top;
+		}
+	}
 }
 
 int	*pop(t_stack *stack)

@@ -6,32 +6,40 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/14 13:06:58 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/17 02:27:10 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-int	init_target(t_target *target, t_stack *stack)
-{
-	target->a = stack;
-	target->b = (t_stack *)malloc(sizeof(t_stack));
-	if (!target->b)
-		return (0);
-	init_stack(target->b);
-	return (1);
-}
-
 void	flush_target(t_target *target, int error)
 {
-	if (error)
-		ft_putstr_fd("Error\n", 2);
 	if (target)
 	{
 		flush_stack(target->a, 0);
 		flush_stack(target->b, 0);
+		flush_stack(target->sequence, 0);
+		free(target);
 	}
-	free(target);
+	if (error)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	exit(EXIT_SUCCESS);
+}
+
+t_target	*init_target(t_stack *stack)
+{
+	t_target	*target;
+
+	target = (t_target *)malloc(sizeof(t_target));
+	if (!target)
+		flush_stack(stack, 1);
+	target->a = stack;
+	target->b = init_stack();
+	target->sequence = init_stack();
+	return (target);
 }
 
 void	print_target(t_target *target)
@@ -40,33 +48,6 @@ void	print_target(t_target *target)
 	print_stack(target->a);
 	ft_printf("[stack b]\n");
 	print_stack(target->b);
-}
-int	is_sorted(t_target *target, char choice, size_t size)
-{
-	t_list	*node;
-	t_stack	*stack;
-	int		*data;
-	int		*next_data;
-	size_t	i;
-
-	if (choice == 'a')
-		stack = target->a;
-	else
-		stack = target->b;
-	i = 0;
-	node = stack->top;
-	while (node && i < size)
-	{
-		data = node->content;
-		if (!node->next)
-			return (1);
-		next_data = (node->next)->content;
-		if (*data > *next_data)
-			return (0);
-		node = node->next;
-		i++;
-	}
-	return (1);
 }
 
 int	*stack_to_array(t_target *target, char choice, size_t size)

@@ -6,13 +6,13 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:35:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/14 13:03:33 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/17 02:43:52 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-void	rotate(t_stack *stack)
+static void	rotate(t_stack *stack)
 {
 	t_list	*node;
 
@@ -30,19 +30,19 @@ void	rotate(t_stack *stack)
 
 void	ra(t_target *target)
 {
-	ft_printf("ra\n");
 	rotate(target->a);
+	push_operation(target, "ra");
 }
 
 void	rb(t_target *target)
 {
-	ft_printf("rb\n");
 	rotate(target->b);
+	push_operation(target, "rb");
 }
 
 void	rr(t_target *target)
 {
-	ft_printf("rr\n");
 	rotate(target->a);
 	rotate(target->b);
+	push_operation(target, "rr");
 }

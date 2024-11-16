@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:22:08 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/14 13:56:22 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/17 02:22:40 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	sort(t_target *target)
 {
 	partition_a(target, target->a->size);
+	if (!is_sorted(target->a, target->a->size) || target->b->size)
+		return (flush_target(target, 1));
 }
 
 void	partition_a(t_target *target, size_t size)
@@ -31,7 +33,7 @@ void	partition_a(t_target *target, size_t size)
 		return ;
 	else if (size == 2)
 	{
-		if(!is_sorted(target, 'a', 2))
+		if(!is_sorted(target->a, 2))
 			sa(target);
 		return ;
 	}
@@ -102,7 +104,7 @@ void	partition_b(t_target *target, size_t size)
 		return (pa(target));
 	else if (size == 2)
 	{
-		if (is_sorted(target,'b', 2))
+		if (is_sorted(target->b, 2))
 			sb(target);
 		pa(target);
 		pa(target);

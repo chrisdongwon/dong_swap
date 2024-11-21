@@ -6,27 +6,42 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/17 02:27:10 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:14:16 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-void	flush_target(t_target *target, int error)
+static int	has_duplicates(int *array, int size)
 {
-	if (target)
+	int	i;
+	
+	i = -1;
+	while (++i < size - 1)
 	{
-		flush_stack(target->a, 0);
-		flush_stack(target->b, 0);
-		flush_stack(target->sequence, 0);
-		free(target);
+		if (array[i] == array[i + 1])
+			return (1);
 	}
-	if (error)
+	return (0);
+}
+
+static int	*stack_to_array(t_stack *stack, int size)
+{
+	int		*result;
+	int		i;
+	t_node	*node;
+
+	result = (int *)malloc(size * sizeof(int));
+	if (!result)
+		return (0);
+	i = 0;
+	node = stack->top;
+	while (i < size)
 	{
-		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
+		result[i++] = node->content;
+		node = node->next;
 	}
-	exit(EXIT_SUCCESS);
+	return (result);
 }
 
 t_target	*init_target(t_stack *stack)
@@ -38,40 +53,38 @@ t_target	*init_target(t_stack *stack)
 		flush_stack(stack, 1);
 	target->a = stack;
 	target->b = init_stack();
-	target->sequence = init_stack();
+	if (!target->b)
+		flush_target(target, 1);
+	target->array = stack_to_array(stack, stack->size);
+	if (!target->array)
+		flush_target(target ,1);
+	sort_array(target->array, stack->size);
+	if (has_duplicates(target->array, stack->size))
+		flush_target(target, 1);
 	return (target);
+}
+
+void	flush_target(t_target *target, int error)
+{
+	if (target)
+	{
+		flush_stack(target->a, 0);
+		flush_stack(target->b, 0);
+		free(target->array);
+		free(target);
+	}
+	if (error)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	exit(EXIT_SUCCESS);
 }
 
 void	print_target(t_target *target)
 {
-	ft_printf("[stack a]\n");
+	ft_printf("[Stack A]\n");
 	print_stack(target->a);
-	ft_printf("[stack b]\n");
+	ft_printf("[Stack B]\n");
 	print_stack(target->b);
-}
-
-int	*stack_to_array(t_target *target, char choice, size_t size)
-{
-	int		*result;
-	t_stack	*stack;
-	int		*data;
-	size_t		i;
-	t_list	*node;
-
-	if (choice == 'a')
-		stack = target->a;
-	else
-		stack = target->b;
-	result = (int *)malloc(size * sizeof(int));
-	if (!result)
-		return (0);
-	i = -1;
-	node = stack->top;
-	while (++i < size)
-	{
-		data = node->content;
-		result[i] = *data;
-		node = node->next;
-	}
-	return (result);
 }

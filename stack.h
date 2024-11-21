@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:08 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/17 02:08:48 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 15:20:31 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 # define STACK_H
 
 # include "libft/libft.h"
+# include "list.h"
 
 typedef struct s_stack
 {
-	t_list	*top;
-	t_list	*bottom;
-	size_t	size;
+	t_node	*top;
+	t_node	*bottom;
+	int		size;
 }	t_stack;
 
+// stack.c
 t_stack	*init_stack(void);
 void	flush_stack(t_stack *stack, int error);
 void	print_stack(t_stack *stack);
-
-void	push(t_stack *stack, int n);
-int		*pop(t_stack *stack);
+int		push(t_stack *stack, int n);
+int		pop(t_stack *stack);
 
 #endif

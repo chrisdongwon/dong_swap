@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:52:33 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/17 02:44:34 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 15:33:31 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 
 void	pa(t_target *target)
 {
-	int	*data;
-
-	data = pop(target->b);
-	if (data)
+	if (target->b->size)
 	{
-		push(target->a, *data);
-		push_operation(target, "pa");
-		free(data);
+		if (!push(target->a, pop(target->b)))
+			return (flush_target(target, 1));
+		ft_printf("pa\n");
 	}
 }
 
 void	pb(t_target *target)
 {
-	int	*data;
-
-	data = pop(target->a);
-	if (data)
+	if (target->a->size)
 	{
-		push(target->b, *data);
-		push_operation(target, "pb");
-		free(data);
+		if (!push(target->b, pop(target->a)))
+			return (flush_target(target, 1));
+		ft_printf("pb\n");
 	}
 }

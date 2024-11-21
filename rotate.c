@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:35:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/17 02:43:52 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 15:26:15 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	rotate(t_stack *stack)
 {
-	t_list	*node;
+	t_node	*node;
 
-	if (stack->size >= 2)
+	if (stack->size > 1)
 	{
 		node = stack->top;
 		stack->top = stack->top->next;
@@ -31,18 +31,18 @@ static void	rotate(t_stack *stack)
 void	ra(t_target *target)
 {
 	rotate(target->a);
-	push_operation(target, "ra");
+	ft_printf("ra\n");
 }
 
 void	rb(t_target *target)
 {
 	rotate(target->b);
-	push_operation(target, "rb");
+	ft_printf("rb\n");
 }
 
 void	rr(t_target *target)
 {
 	rotate(target->a);
 	rotate(target->b);
-	push_operation(target, "rr");
+	ft_printf("rr\n");
 }

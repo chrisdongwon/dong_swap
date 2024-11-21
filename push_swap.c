@@ -6,71 +6,41 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/17 02:29:54 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:13:33 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_duplicate(t_stack *stack, int n)
+static int	is_sorted(t_stack *stack)
 {
-	t_list	*node;
-	int		*data;
-
-	if (!stack->size)
-		return (0);
+	t_node	*node;
+	
 	node = stack->top;
-	while (node)
+	while (node && node->next)
 	{
-		data = node->content;
-		if (*data == n)
-			return (1);
-		node = node->next;
-	}
-	return (0);
-}
-
-t_stack	*set_data(int argc, char **argv)
-{
-	t_stack	*stack;
- 	size_t	i;
-	int		data;
-
-	stack = init_stack();
-	i = argc;
-	while (--i)
-	{
-		if (!ft_isinteger(argv[i]))
-			flush_stack(stack, 1);
-		data = ft_atoi(argv[i]);
-		if (is_duplicate(stack, data))
-			flush_stack(stack, 1);
-		push(stack, data);
-	}
-	return (stack);
-}
-
-int	is_sorted(t_stack *stack, size_t size)
-{
-	t_list	*node;
-	int		*data;
-	int		*next_data;
-	size_t	i;
-
-	i = 0;
-	node = stack->top;
-	while (node && i < size)
-	{
-		data = node->content;
-		if (!node->next)
-			return (1);
-		next_data = (node->next)->content;
-		if (*data > *next_data)
+		if (node->content > node->next->content)
 			return (0);
 		node = node->next;
-		i++;
 	}
 	return (1);
+}
+
+static t_stack	*set_data(int argc, char **argv)
+{
+	t_stack	*stack;
+
+	stack = init_stack();
+	if (!stack)
+		flush_stack(stack, 1);
+	while (--argc)
+	{
+		if (!ft_isinteger(argv[argc]))
+			flush_stack(stack, 1);
+		if (!push(stack, ft_atoi(argv[argc])))
+			flush_stack(stack, 1);
+	}
+	return (stack);
 }
 
 void	push_swap(int argc, char **argv)
@@ -80,7 +50,7 @@ void	push_swap(int argc, char **argv)
 
 	stack = set_data(argc, argv);
 	target = init_target(stack);
-	sort(target);
-	// post-sort optimization of sequences
-	print_sequence(target);
+	if (!is_sorted(stack))
+		ft_printf("not sorted\n");
+	flush_target(target, 0);
 }

@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 13:53:19 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 17:57:50 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/21 14:42:23 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/21 15:20:38 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef LIST_H
+# define LIST_H
 
-# include "target.h"
+# include  <stdlib.h>
 
-// push_swap.c
-void	push_swap(int argc, char **argv);
+typedef struct s_node
+{
+	int				content;
+	struct s_node	*prev;
+	struct s_node	*next;
+}	t_node;
+
+// list.c
+t_node	*new_node(void);
+void	add_node(t_node **list, t_node *node);
+void	flush_list(t_node **list);
 
 #endif

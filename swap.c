@@ -6,43 +6,48 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/17 02:43:29 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 15:29:20 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "target.h"
 
-static void	swap(t_stack *stack)
+static int	swap(t_stack *stack)
 {
-	int	*first;
-	int	*second;
+	int	first;
+	int	second;
 
-	if (stack->size >= 2)
+	if (stack->size > 1)
 	{
 		first = pop(stack);
 		second = pop(stack);
-		push(stack, *first);
-		push(stack, *second);
-		free(first);
-		free(second);
+		if (!push(stack, first))
+			return (0);
+		if (!push(stack, second))
+			return (0);
 	}
+	return (1);
 }
 
 void	sa(t_target *target)
 {
-	swap(target->a);
-	push_operation(target, "sa");
+	if (!swap(target->a))
+		return (flush_target(target, 1));
+	ft_printf("sa\n");
 }
 
 void	sb(t_target *target)
 {
-	swap(target->b);
-	push_operation(target, "sb");
+	if (!swap(target->b))
+		return (flush_target(target, 1));
+	ft_printf("sb\n");
 }
 
 void	ss(t_target *target)
 {
-	swap(target->a);
-	swap(target->b);
-	push_operation(target, "ss");
+	if (!swap(target->a))
+		return (flush_target(target, 1));
+	if (!swap(target->b))
+		return (flush_target(target, 1));
+	ft_printf("ss\n");
 }

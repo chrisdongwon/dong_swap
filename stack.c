@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:15:49 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 21:07:44 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,18 @@ int	pop(t_stack *stack)
 	return (result);
 }
 
-void	print_stack(t_stack *stack)
+int	stack_extremum(t_stack *stack, int (*comparator)(int, int))
 {
+	int		result;
 	t_node	*node;
 
 	node = stack->top;
-	if (!node)
-	{
-		ft_printf("Empty\n");
-		return ;
-	}
+	result = node->content;
 	while (node)
 	{
-		ft_printf("%d\n", node->content);
+		if (comparator(node->content, result))
+			result = node->content;
 		node = node->next;
 	}
+	return (result);
 }

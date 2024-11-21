@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 08:08:08 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 20:56:29 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/21 20:23:54 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/21 20:24:24 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "list.h"
-
-typedef struct s_stack
+int	ft_abs(int n)
 {
-	t_node	*top;
-	t_node	*bottom;
-	int		size;
-}	t_stack;
-
-// stack.c
-t_stack	*init_stack(void);
-void	flush_stack(t_stack *stack, int error);
-int		push(t_stack *stack, int n);
-int		pop(t_stack *stack);
-int		stack_extremum(t_stack *stack, int (*comparator)(int, int));
-
-#endif
+	if (n < 0)
+		return (-1 * n);
+	return (n);
+}

@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:29:58 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:50:19 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:53:15 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	sort_three(t_target *target)
 	}
 }
 
-static void sort_four_five(t_target *target)
+static void	sort_four_five(t_target *target)
 {
 	int	pivot;
 	int	count;

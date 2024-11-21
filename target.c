@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:25:32 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 21:00:37 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,4 @@ void	flush_target(t_target *target, int error)
 		exit(EXIT_FAILURE);
 	}
 	exit(EXIT_SUCCESS);
-}
-
-void	print_target(t_target *target)
-{
-	ft_printf("[Stack A]\n");
-	print_stack(target->a);
-	ft_printf("[Stack B]\n");
-	print_stack(target->b);
 }

@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:12:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 17:55:22 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 20:59:35 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_target
 // target.c
 t_target	*init_target(t_stack *stack);
 void		flush_target(t_target *target, int error);
-void		print_target(t_target *target);
 
 // target_util.c
 void		sort_array(int *array, int size);

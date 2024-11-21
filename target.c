@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:14:16 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:25:32 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	has_duplicates(int *array, int size)
 {
 	int	i;
-	
+
 	i = -1;
 	while (++i < size - 1)
 	{
@@ -57,7 +57,7 @@ t_target	*init_target(t_stack *stack)
 		flush_target(target, 1);
 	target->array = stack_to_array(stack, stack->size);
 	if (!target->array)
-		flush_target(target ,1);
+		flush_target(target, 1);
 	sort_array(target->array, stack->size);
 	if (has_duplicates(target->array, stack->size))
 		flush_target(target, 1);

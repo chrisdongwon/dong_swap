@@ -6,13 +6,13 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:40:32 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:04:09 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:26:59 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(int* a, int* b)
+static void	swap(int *a, int *b)
 {
 	int	temp;
 
@@ -21,7 +21,7 @@ static void	swap(int* a, int* b)
 	*b = temp;
 }
 
-static int partition(int *arr, int low, int high)
+static int	partition(int *arr, int low, int high)
 {
 	int	pivot;
 	int	i;
@@ -39,7 +39,7 @@ static int partition(int *arr, int low, int high)
 	return (i);
 }
 
-void quick_sort(int *arr, int low, int high)
+void	quick_sort(int *arr, int low, int high)
 {
 	int	i;
 
@@ -51,7 +51,7 @@ void quick_sort(int *arr, int low, int high)
 	}
 }
 
-void sort_array(int *array, int size)
+void	sort_array(int *array, int size)
 {
 	quick_sort(array, 0, size - 1);
 }

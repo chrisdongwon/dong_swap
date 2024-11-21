@@ -6,25 +6,11 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:13:33 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:46:05 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	is_sorted(t_stack *stack)
-{
-	t_node	*node;
-	
-	node = stack->top;
-	while (node && node->next)
-	{
-		if (node->content > node->next->content)
-			return (0);
-		node = node->next;
-	}
-	return (1);
-}
 
 static t_stack	*set_data(int argc, char **argv)
 {
@@ -43,6 +29,20 @@ static t_stack	*set_data(int argc, char **argv)
 	return (stack);
 }
 
+int	is_sorted(t_stack *stack)
+{
+	t_node	*node;
+
+	node = stack->top;
+	while (node && node->next)
+	{
+		if (node->content > node->next->content)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}
+
 void	push_swap(int argc, char **argv)
 {
 	t_stack		*stack;
@@ -50,7 +50,8 @@ void	push_swap(int argc, char **argv)
 
 	stack = set_data(argc, argv);
 	target = init_target(stack);
-	if (!is_sorted(stack))
-		ft_printf("not sorted\n");
+	if (!is_sorted(target->a))
+		sort(target);
+	print_target(target);
 	flush_target(target, 0);
 }

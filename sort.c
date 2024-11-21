@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 14:42:23 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:26:24 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/21 18:23:12 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/21 18:45:50 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#include "push_swap.h"
 
-# include <stdlib.h>
-
-typedef struct s_node
+void	sort(t_target *target)
 {
-	int				content;
-	struct s_node	*prev;
-	struct s_node	*next;
-}	t_node;
-
-// list.c
-t_node	*new_node(void);
-void	add_node(t_node **list, t_node *node);
-void	flush_list(t_node **list);
-
-#endif
+	if (target->a->size <= 5)
+		manual_sort(target);
+}

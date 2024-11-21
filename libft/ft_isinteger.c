@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:17:48 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:01:14 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/21 18:26:04 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_isinteger(const char *str)
 			return (0);
 	}
 	if (str[0] == '-' && is_underflow(str, length))
-		return (0);	
+		return (0);
 	if (is_overflow(str, length))
 		return (0);
 	return (1);

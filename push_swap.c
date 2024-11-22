@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 13:53:07 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 20:34:51 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/22 07:56:56 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,11 @@ void	push_swap(int argc, char **argv)
 	if (!is_sorted(target->a))
 		flush_target(target, 1);
 	flush_target(target, 0);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc > 1)
+		push_swap(argc, argv);
+	return (0);
 }

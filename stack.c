@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 21:07:44 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/24 17:17:08 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,6 @@ int	pop(t_stack *stack)
 		stack->size--;
 		if (!stack->size)
 			stack->bottom = 0;
-	}
-	return (result);
-}
-
-int	stack_extremum(t_stack *stack, int (*comparator)(int, int))
-{
-	int		result;
-	t_node	*node;
-
-	node = stack->top;
-	result = node->content;
-	while (node)
-	{
-		if (comparator(node->content, result))
-			result = node->content;
-		node = node->next;
 	}
 	return (result);
 }

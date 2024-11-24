@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:08:08 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 20:56:29 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/24 17:12:13 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ t_stack	*init_stack(void);
 void	flush_stack(t_stack *stack, int error);
 int		push(t_stack *stack, int n);
 int		pop(t_stack *stack);
+
+// stack_util.c
+t_stack	*set_data(int argc, char **argv);
+int		is_sorted(t_stack *stack);
 int		stack_extremum(t_stack *stack, int (*comparator)(int, int));
 
 #endif

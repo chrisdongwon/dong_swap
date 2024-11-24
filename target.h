@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:12:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 20:59:35 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/24 17:15:27 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_target
 }	t_target;
 
 // target.c
-t_target	*init_target(t_stack *stack);
+t_target	*init_target(int argc, char **argv);
 void		flush_target(t_target *target, int error);
 
 // target_util.c

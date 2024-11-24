@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/24 17:18:49 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/24 17:20:42 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,22 @@ static int	*stack_to_array(t_stack *stack, int size)
 
 t_target	*init_target(int argc, char **argv)
 {
+	t_stack		*stack;
 	t_target	*target;
 
+	stack = set_data(argc, argv);
 	target = (t_target *)malloc(sizeof(t_target));
 	if (!target)
-		flush_target(target, 1);
-	target->a = set_data(argc, argv);
+		flush_stack(stack, 1);
+	target->a = stack;
 	target->b = init_stack();
 	if (!target->b)
 		flush_target(target, 1);
-	target->array = stack_to_array(target->a, target->a->size);
+	target->array = stack_to_array(stack, stack->size);
 	if (!target->array)
 		flush_target(target, 1);
-	sort_array(target->array, target->a->size);
-	if (has_duplicates(target->array, target->a->size))
+	sort_array(target->array, stack->size);
+	if (has_duplicates(target->array, stack->size))
 		flush_target(target, 1);
 	return (target);
 }

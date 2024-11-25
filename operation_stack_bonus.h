@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   operation_stack_bonus.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 14:52:33 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 11:08:23 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/25 09:42:25 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/25 10:09:10 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "target.h"
+#ifndef OPERATION_STACK_BONUS_H
+# define OPERATION_STACK_BONUS_H
 
-void	pa(t_target *target, int print)
-{
-	if (target->b->size)
-	{
-		if (!push(target->a, pop(target->b)))
-			return (flush_target(target, 1));
-		if (print)
-			ft_printf("pa\n");
-	}
-}
+# include "libft/libft.h"
 
-void	pb(t_target *target, int print)
+typedef struct s_op_stack
 {
-	if (target->a->size)
-	{
-		if (!push(target->b, pop(target->a)))
-			return (flush_target(target, 1));
-		if (print)
-			ft_printf("pb\n");
-	}
-}
+	t_list	*top;
+	t_list	*bottom;
+	size_t	size;
+}	t_op_stack;
+
+// operation_stack_bonus.c
+t_op_stack	*init_operation_stack(void);
+void		flush_operation_stack(t_op_stack *stack, int error);
+int			push_operation(t_op_stack *stack, char *str);
+
+#endif

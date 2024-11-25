@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   operation_stack_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 08:08:09 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/24 17:52:44 by cwon             ###   ########.fr       */
+/*   Created: 2024/11/25 09:45:11 by cwon              #+#    #+#             */
+/*   Updated: 2024/11/25 09:53:15 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "operation_stack_bonus.h"
 
-t_stack	*init_stack(void)
+t_op_stack	*init_operation_stack(void)
 {
-	t_stack	*stack;
+	t_op_stack	*stack;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
+	stack = (t_op_stack *)malloc(sizeof(t_op_stack));
 	if (!stack)
 		return (0);
 	stack->top = 0;
@@ -25,11 +25,11 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
-void	flush_stack(t_stack *stack, int error)
+void	flush_operation_stack(t_op_stack *stack, int error)
 {
 	if (stack)
 	{
-		flush_list(&(stack->top));
+		ft_lstclear(&(stack->top), free);
 		free(stack);
 	}
 	if (error)
@@ -39,38 +39,16 @@ void	flush_stack(t_stack *stack, int error)
 	}
 }
 
-int	push(t_stack *stack, int n)
+int	push_operation(t_op_stack *stack, char *str)
 {
-	t_node	*node;
+	t_list	*node;
 
-	node = new_node();
+	node = ft_lstnew(str);
 	if (!node)
 		return (0);
-	node->content = n;
-	add_node(&(stack->top), node);
+	ft_lstadd_front(&(stack->top), node);
 	stack->size++;
 	if (stack->size == 1)
 		stack->bottom = stack->top;
 	return (1);
-}
-
-// precondition: stack->size > 0
-int	pop(t_stack *stack)
-{
-	int		result;
-	t_node	*node;
-
-	result = 0;
-	if (stack && stack->size)
-	{
-		node = stack->top;
-		result = node->content;
-		stack->top = node->next;
-		free(node);
-		node = 0;
-		stack->size--;
-		if (!stack->size)
-			stack->bottom = 0;
-	}
-	return (result);
 }

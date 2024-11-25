@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:23:12 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 22:16:06 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/25 10:20:08 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static void	partition(t_target *target)
 	{
 		if (target->a->top->content < pivot[0])
 		{
-			pb(target);
-			rb(target);
+			pb(target, 1);
+			rb(target, 1);
 		}
 		else if (target->a->top->content < pivot[1])
-			pb(target);
+			pb(target, 1);
 		else
-			ra(target);
+			ra(target, 1);
 		i--;
 	}
 }
@@ -44,12 +44,12 @@ static void	minimum_to_top(t_target *target)
 	minimum_location = top_bottom_location(target, minimum, 0);
 	while (minimum_location > 0)
 	{
-		ra(target);
+		ra(target, 1);
 		minimum_location--;
 	}
 	while (minimum_location < 0)
 	{
-		rra(target);
+		rra(target, 1);
 		minimum_location++;
 	}
 }
@@ -58,12 +58,12 @@ static void	sort_target(t_target *target)
 {
 	partition(target);
 	while (target->a->size > 3)
-		pb(target);
+		pb(target, 1);
 	manual_sort(target);
 	while (target->b->size)
 	{
 		minimum_rotation(target);
-		pa(target);
+		pa(target, 1);
 	}
 	minimum_to_top(target);
 }

@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:12:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/24 17:15:27 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/25 10:17:58 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ void		flush_target(t_target *target, int error);
 void		sort_array(int *array, int size);
 
 // swap.c
-void		sa(t_target *target);
-void		sb(t_target *target);
-void		ss(t_target *target);
+void		sa(t_target *target, int print);
+void		sb(t_target *target, int print);
+void		ss(t_target *target, int print);
 
 // push.c
-void		pa(t_target *target);
-void		pb(t_target *target);
+void		pa(t_target *target, int print);
+void		pb(t_target *target, int print);
 
 // rotate.c
-void		ra(t_target *target);
-void		rb(t_target *target);
-void		rr(t_target *target);
+void		ra(t_target *target, int print);
+void		rb(t_target *target, int print);
+void		rr(t_target *target, int print);
 
 // reverse.c
-void		rra(t_target *target);
-void		rrb(t_target *target);
-void		rrr(t_target *target);
+void		rra(t_target *target, int print);
+void		rrb(t_target *target, int print);
+void		rrr(t_target *target, int print);
 
 #endif

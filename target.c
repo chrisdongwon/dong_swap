@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:21:28 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/24 17:20:42 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/25 00:26:31 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,4 @@ void	flush_target(t_target *target, int error)
 		ft_putstr_fd("Error\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	exit(EXIT_SUCCESS);
 }

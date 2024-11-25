@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:29:58 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 22:15:54 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/25 11:14:56 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	push_count(t_stack *stack, int pivot)
 static void	sort_two(t_target *target)
 {
 	if (target->a->top->content > target->a->top->next->content)
-		sa(target);
+		sa(target, 1);
 }
 
 static void	sort_three(t_target *target)
@@ -43,19 +43,19 @@ static void	sort_three(t_target *target)
 	a[2] = target->a->top->next->next->content;
 	if (a[0] < a[1] && a[1] > a[2] && a[0] < a[2])
 	{
-		sa(target);
-		ra(target);
+		sa(target, 1);
+		ra(target, 1);
 	}
 	else if (a[0] > a[1] && a[1] < a[2] && a[0] < a[2])
-		sa(target);
+		sa(target, 1);
 	else if (a[0] > a[1] && a[1] < a[2] && a[0] > a[2])
-		ra(target);
+		ra(target, 1);
 	else if (a[0] < a[1] && a[1] > a[2] && a[0] > a[2])
-		rra(target);
+		rra(target, 1);
 	else
 	{
-		sa(target);
-		rra(target);
+		sa(target, 1);
+		rra(target, 1);
 	}
 }
 
@@ -70,20 +70,20 @@ static void	sort_four_five(t_target *target)
 	{
 		if (target->a->top->content < pivot)
 		{
-			pb(target);
+			pb(target, 1);
 			count--;
 		}
 		else
-			ra(target);
+			ra(target, 1);
 	}
 	if (target->a->size == 2)
 		sort_two(target);
 	else
 		sort_three(target);
 	if (is_sorted(target->b))
-		sb(target);
-	pa(target);
-	pa(target);
+		sb(target, 1);
+	pa(target, 1);
+	pa(target, 1);
 }
 
 void	manual_sort(t_target *target)

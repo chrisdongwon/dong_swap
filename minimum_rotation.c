@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:11:14 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 21:52:47 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/25 11:09:07 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	rotate_ab(t_target *target, int *a, int *b)
 {
 	while (*a > 0 && *b > 0)
 	{
-		rr(target);
+		rr(target, 1);
 		(*a)--;
 		(*b)--;
 	}
 	while (*a < 0 && *b < 0)
 	{
-		rrr(target);
+		rrr(target, 1);
 		(*a)++;
 		(*b)++;
 	}
@@ -32,12 +32,12 @@ static void	rotate_a(t_target *target, int a)
 {
 	while (a > 0)
 	{
-		ra(target);
+		ra(target, 1);
 		a--;
 	}
 	while (a < 0)
 	{
-		rra(target);
+		rra(target, 1);
 		a++;
 	}
 }
@@ -46,12 +46,12 @@ static void	rotate_b(t_target *target, int b)
 {
 	while (b > 0)
 	{
-		rb(target);
+		rb(target, 1);
 		b--;
 	}
 	while (b < 0)
 	{
-		rrb(target);
+		rrb(target, 1);
 		b++;
 	}
 }

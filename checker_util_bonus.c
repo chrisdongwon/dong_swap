@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:35:37 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 10:08:13 by cwon             ###   ########.fr       */
+/*   Updated: 2024/11/27 15:06:08 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,27 @@ void	set_operations(t_checker *checker)
 
 t_target_operation	get_operation(t_checker *checker, char *str)
 {
-	if (!ft_strncmp(str, "sa", ft_strlen(str)))
+	if (!ft_strncmp(str, "sa", 3))
 		return (sa);
-	if (!ft_strncmp(str, "sb", ft_strlen(str)))
+	if (!ft_strncmp(str, "sb", 3))
 		return (sb);
-	if (!ft_strncmp(str, "ss", ft_strlen(str)))
+	if (!ft_strncmp(str, "ss", 3))
 		return (ss);
-	if (!ft_strncmp(str, "ra", ft_strlen(str)))
+	if (!ft_strncmp(str, "ra", 3))
 		return (ra);
-	if (!ft_strncmp(str, "rb", ft_strlen(str)))
+	if (!ft_strncmp(str, "rb", 3))
 		return (rb);
-	if (!ft_strncmp(str, "rr", ft_strlen(str)))
+	if (!ft_strncmp(str, "rr", 3))
 		return (rr);
-	if (!ft_strncmp(str, "rra", ft_strlen(str)))
+	if (!ft_strncmp(str, "rra", 4))
 		return (rra);
-	if (!ft_strncmp(str, "rrb", ft_strlen(str)))
+	if (!ft_strncmp(str, "rrb", 4))
 		return (rrb);
-	if (!ft_strncmp(str, "rrr", ft_strlen(str)))
+	if (!ft_strncmp(str, "rrr", 4))
 		return (rrr);
-	if (!ft_strncmp(str, "pa", ft_strlen(str)))
+	if (!ft_strncmp(str, "pa", 3))
 		return (pa);
-	if (!ft_strncmp(str, "pb", ft_strlen(str)))
+	if (!ft_strncmp(str, "pb", 3))
 		return (pb);
 	flush_checker(checker, 1);
 	return (0);

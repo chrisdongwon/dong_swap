@@ -6,7 +6,7 @@
 #    By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 10:53:51 by cwon              #+#    #+#              #
-#    Updated: 2024/11/25 09:54:41 by cwon             ###   ########.fr        #
+#    Updated: 2024/12/08 23:30:45 by cwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ all: $(lib_path) $(NAME)
 
 bonus: $(lib_path) $(bonus_name)
 
-$(lib_path): $(lib_dir)
+$(lib_path):
 	make -C $(lib_dir)
 
 $(NAME): $(src) $(mandatory_src) $(obj) $(mandatory_obj) $(lib_path)

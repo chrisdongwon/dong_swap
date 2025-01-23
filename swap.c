@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:41:34 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 10:19:01 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/23 11:55:10 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/23 15:12:11 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "target.h"
+#include "push_swap.h"
 
-static int	swap(t_stack *stack)
+static bool	swap(t_stack *stack)
 {
 	int	first;
 	int	second;
@@ -22,35 +22,32 @@ static int	swap(t_stack *stack)
 		first = pop(stack);
 		second = pop(stack);
 		if (!push(stack, first))
-			return (0);
+			return (false);
 		if (!push(stack, second))
-			return (0);
+			return (false);
 	}
-	return (1);
+	return (true);
 }
 
-void	sa(t_target *target, int print)
+void	sa(t_pushswap *param)
 {
-	if (!swap(target->a))
-		return (flush_target(target, 1));
-	if (print)
-		ft_printf("sa\n");
+	if (!swap(param->a))
+		return (flush_pushswap(param, true));
+	ft_printf("sa\n");
 }
 
-void	sb(t_target *target, int print)
+void	sb(t_pushswap *param)
 {
-	if (!swap(target->b))
-		return (flush_target(target, 1));
-	if (print)
-		ft_printf("sb\n");
+	if (!swap(param->b))
+		return (flush_pushswap(param, true));
+	ft_printf("sb\n");
 }
 
-void	ss(t_target *target, int print)
+void	ss(t_pushswap *param)
 {
-	if (!swap(target->a))
-		return (flush_target(target, 1));
-	if (!swap(target->b))
-		return (flush_target(target, 1));
-	if (print)
-		ft_printf("ss\n");
+	if (!swap(param->a))
+		return (flush_pushswap(param, true));
+	if (!swap(param->b))
+		return (flush_pushswap(param, true));
+	ft_printf("ss\n");
 }

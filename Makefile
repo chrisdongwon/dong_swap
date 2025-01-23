@@ -5,69 +5,68 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/08 10:53:51 by cwon              #+#    #+#              #
-#    Updated: 2024/12/08 23:30:45 by cwon             ###   ########.fr        #
+#    Created: 2024/12/05 14:08:28 by cwon              #+#    #+#              #
+#    Updated: 2025/01/23 18:41:36 by cwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = push_swap
+BONUS_EXEC = checker
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-src = \
-	list.c \
-	stack.c \
-	stack_util.c \
-	target.c \
-	target_util.c \
-	swap.c \
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+HEADER = \
+	push_swap.h \
+	doubly_linked_list.h \
+	stack.h
+SRC = \
+	doubly_linked_list.c \
+	init.c \
+	push_swap.c \
 	push.c \
+	quicksort.c \
+	reverse_rotate.c \
 	rotate.c \
-	reverse.c
-
-mandatory_src = \
-	manual_sort.c \
-	best_location.c \
+	stack.c \
+	swap.c \
+	push_swap_util.c \
 	minimum_rotation.c \
-	sort.c \
-	push_swap.c
+	adjust.c
+OBJ = $(SRC:.c=.o)
 
-bonus_src = \
-	operation_stack_bonus.c \
-	checker_bonus.c \
-	checker_util_bonus.c
+BONUS_HEADER = checker_bonus.h
+BONUS_SRC = \
+	checker_bonus.c
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-obj = $(src:.c=.o)
-mandatory_obj = $(mandatory_src:.c=.o)
-bonus_obj = $(bonus_src:.c=.o)
+all: $(NAME)
 
-lib_dir = libft
-lib_name = libft.a
-lib_path = $(lib_dir)/$(lib_name)
+$(NAME): $(LIBFT) $(OBJ) $(HEADER)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 
-NAME = push_swap
-bonus_name = checker
+bonus: $(BONUS_EXEC)
 
-all: $(lib_path) $(NAME)
+$(BONUS_EXEC): $(LIBFT) $(BONUS_OBJ) $(HEADER)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_EXEC) $(LIBFT)
 
-bonus: $(lib_path) $(bonus_name)
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
-$(lib_path):
-	make -C $(lib_dir)
-
-$(NAME): $(src) $(mandatory_src) $(obj) $(mandatory_obj) $(lib_path)
-	$(CC) $(CFLAGS) $(src) $(mandatory_src) -o $(NAME) $(lib_path)
-
-$(bonus_name): $(src) $(bonus_src) $(obj) $(bonus_obj) $(lib_path)
-	$(CC) $(CFLAGS) $(src) $(bonus_src) -o $(bonus_name) $(lib_path)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make clean -C $(lib_dir)
-	rm -f $(obj) $(mandatory_obj) $(bonus_obj)
+	make clean -C $(LIBFT_DIR)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	make fclean -C $(lib_dir)
-	rm -f $(NAME) $(bonus_name)
+	make fclean -C $(LIBFT_DIR)
+	rm -f $(NAME) $(BONUS_EXEC)
 
 re: fclean all
 
-.PHONY: all clean fclean re libft bonus
+.PHONY: all clean fclean re bonus

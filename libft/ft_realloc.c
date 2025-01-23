@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 13:41:30 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/15 15:38:26 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/14 10:22:32 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/14 10:25:43 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_realloc(char *array, size_t current_size, size_t new_size)
 {
-	size_t	length;
+	char	*result;
 
-	length = 0;
-	if (!s)
+	if (!array || !new_size)
+	{
+		if (array)
+			free(array);
 		return (0);
-	while (s[length])
-		length++;
-	return (length);
+	}
+	if (current_size == new_size)
+		return (array);
+	result = (char *)malloc(new_size);
+	if (!result)
+		return (0);
+	if (current_size < new_size)
+		ft_memcpy(result, array, current_size);
+	else
+		ft_memcpy(result, array, new_size);
+	free(array);
+	return (result);
 }

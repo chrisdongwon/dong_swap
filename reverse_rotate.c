@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse.c                                          :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 13:57:53 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 11:07:59 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/23 12:25:59 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/23 19:03:02 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "target.h"
+#include "push_swap.h"
 
 static void	reverse_rotate(t_stack *stack)
 {
@@ -28,24 +28,21 @@ static void	reverse_rotate(t_stack *stack)
 	}
 }
 
-void	rra(t_target *target, int print)
+void	rra(t_pushswap *param)
 {
-	reverse_rotate(target->a);
-	if (print)
-		ft_printf("rra\n");
+	reverse_rotate(param->a);
+	ft_printf("rra\n");
 }
 
-void	rrb(t_target *target, int print)
+void	rrb(t_pushswap *param)
 {
-	reverse_rotate(target->b);
-	if (print)
-		ft_printf("rra\n");
+	reverse_rotate(param->b);
+	ft_printf("rrb\n");
 }
 
-void	rrr(t_target *target, int print)
+void	rrr(t_pushswap *param)
 {
-	reverse_rotate(target->a);
-	reverse_rotate(target->b);
-	if (print)
-		ft_printf("rrr\n");
+	reverse_rotate(param->a);
+	reverse_rotate(param->b);
+	ft_printf("rrr\n");
 }

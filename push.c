@@ -5,31 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 14:52:33 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 11:08:23 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/23 12:08:55 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/23 15:12:21 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "target.h"
+#include "push_swap.h"
 
-void	pa(t_target *target, int print)
+void	pa(t_pushswap *param)
 {
-	if (target->b->size)
+	if (param->b->size)
 	{
-		if (!push(target->a, pop(target->b)))
-			return (flush_target(target, 1));
-		if (print)
-			ft_printf("pa\n");
+		if (!push(param->a, pop(param->b)))
+			return (flush_pushswap(param, true));
+		ft_printf("pa\n");
 	}
 }
 
-void	pb(t_target *target, int print)
+void	pb(t_pushswap *param)
 {
-	if (target->a->size)
+	if (param->a->size)
 	{
-		if (!push(target->b, pop(target->a)))
-			return (flush_target(target, 1));
-		if (print)
-			ft_printf("pb\n");
+		if (!push(param->b, pop(param->a)))
+			return (flush_pushswap(param, true));
+		ft_printf("pb\n");
 	}
 }

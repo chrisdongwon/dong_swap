@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:35:16 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 11:07:20 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/23 12:17:49 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/23 15:12:16 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "target.h"
+#include "push_swap.h"
 
 static void	rotate(t_stack *stack)
 {
@@ -28,24 +28,21 @@ static void	rotate(t_stack *stack)
 	}
 }
 
-void	ra(t_target *target, int print)
+void	ra(t_pushswap *param)
 {
-	rotate(target->a);
-	if (print)
-		ft_printf("ra\n");
+	rotate(param->a);
+	ft_printf("ra\n");
 }
 
-void	rb(t_target *target, int print)
+void	rb(t_pushswap *param)
 {
-	rotate(target->b);
-	if (print)
-		ft_printf("rb\n");
+	rotate(param->b);
+	ft_printf("rb\n");
 }
 
-void	rr(t_target *target, int print)
+void	rr(t_pushswap *param)
 {
-	rotate(target->a);
-	rotate(target->b);
-	if (print)
-		ft_printf("rr\n");
+	rotate(param->a);
+	rotate(param->b);
+	ft_printf("rr\n");
 }

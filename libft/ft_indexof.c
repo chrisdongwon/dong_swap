@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_stack_bonus.h                            :+:      :+:    :+:   */
+/*   ft_indexof.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 09:42:25 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/25 10:09:10 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/15 15:42:07 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/15 15:42:34 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATION_STACK_BONUS_H
-# define OPERATION_STACK_BONUS_H
+#include "libft.h"
 
-# include "libft/libft.h"
-
-typedef struct s_op_stack
+ssize_t	ft_indexof(char *s, int c)
 {
-	t_list	*top;
-	t_list	*bottom;
-	size_t	size;
-}	t_op_stack;
+	ssize_t	i;
 
-// operation_stack_bonus.c
-t_op_stack	*init_operation_stack(void);
-void		flush_operation_stack(t_op_stack *stack, int error);
-int			push_operation(t_op_stack *stack, char *str);
-
-#endif
+	if (!s)
+		return (-1);
+	i = -1;
+	while (s[++i])
+	{
+		if (s[i] == (c % 128))
+			return (i);
+	}
+	return (-1);
+}

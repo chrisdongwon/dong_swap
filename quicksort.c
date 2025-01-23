@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   target_util.c                                      :+:      :+:    :+:   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 17:40:32 by cwon              #+#    #+#             */
-/*   Updated: 2024/11/21 18:26:59 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/23 10:05:43 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/23 10:14:07 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,33 @@ static int	partition(int *arr, int low, int high)
 	return (i);
 }
 
-void	quick_sort(int *arr, int low, int high)
+static void	quicksort(int *arr, int low, int high)
 {
 	int	i;
 
 	if (low < high)
 	{
 		i = partition(arr, low, high);
-		quick_sort(arr, low, i - 1);
-		quick_sort(arr, i + 1, high);
+		quicksort(arr, low, i - 1);
+		quicksort(arr, i + 1, high);
 	}
 }
 
-void	sort_array(int *array, int size)
+static void	check_duplicates(t_pushswap *param)
 {
-	quick_sort(array, 0, size - 1);
+	size_t	i;
+
+	i = 0;
+	while (i < param->array_size - 1)
+	{
+		if (param->array[i] == param->array[i + 1])
+			flush_pushswap(param, true);
+		i++;
+	}
+}
+
+void	sort_array(t_pushswap *param)
+{
+	quicksort(param->array, 0, param->array_size - 1);
+	check_duplicates(param);
 }

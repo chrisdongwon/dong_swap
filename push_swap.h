@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:41:43 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/23 18:52:48 by cwon             ###   ########.fr       */
+/*   Updated: 2025/01/23 19:22:39 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,19 @@ typedef struct s_pushswap
 	t_stack	*b;
 }	t_pushswap;
 
+// adjust.c
+void	adjust(t_pushswap *param, int *a, int *b);
+void	final_adjustment(t_pushswap *param);
+
 // init.c
 void	init_pushswap(t_pushswap *param, int argc, char **argv);
-
-// push_swap_util.c
-void	flush_pushswap(t_pushswap *param, bool error);
-void	tripartition(t_pushswap *param);
-void	print_pushswap(t_pushswap *param);
 
 // minimum_rotation.c
 void	get_minimum_rotation(t_pushswap *param, int *a, int *b);
 int		top_location(t_pushswap *param);
 
-// adjust.c
-void	adjust(t_pushswap *param, int *a, int *b);
-void	final_adjustment(t_pushswap *param);
+// push_swap.c
+void	flush_pushswap(t_pushswap *param, bool error);
 
 // quicksort.c
 void	sort_array(t_pushswap *param);

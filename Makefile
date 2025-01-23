@@ -6,7 +6,7 @@
 #    By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/05 14:08:28 by cwon              #+#    #+#              #
-#    Updated: 2025/01/23 18:41:36 by cwon             ###   ########.fr        #
+#    Updated: 2025/01/23 19:20:31 by cwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,18 +24,17 @@ HEADER = \
 	doubly_linked_list.h \
 	stack.h
 SRC = \
+	adjust.c \
 	doubly_linked_list.c \
 	init.c \
+	minimum_rotation.c \
 	push_swap.c \
 	push.c \
 	quicksort.c \
 	reverse_rotate.c \
 	rotate.c \
 	stack.c \
-	swap.c \
-	push_swap_util.c \
-	minimum_rotation.c \
-	adjust.c
+	swap.c
 OBJ = $(SRC:.c=.o)
 
 BONUS_HEADER = checker_bonus.h

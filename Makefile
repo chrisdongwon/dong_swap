@@ -6,7 +6,7 @@
 #    By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/05 14:08:28 by cwon              #+#    #+#              #
-#    Updated: 2025/01/23 19:20:31 by cwon             ###   ########.fr        #
+#    Updated: 2025/01/24 13:10:10 by cwon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,16 @@ SRC = \
 	rotate.c \
 	stack.c \
 	swap.c
-OBJ = $(SRC:.c=.o)
+MAIN = main.c
+OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
 
-BONUS_HEADER = checker_bonus.h
+BONUS_HEADER = \
+	checker_bonus.h \
+	operations_bonus.h
 BONUS_SRC = \
-	checker_bonus.c
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
+	checker_bonus.c \
+	operations_bonus.c
+BONUS_OBJ = $(BONUS_SRC:.c=.o) $(SRC:.c=.o)
 
 all: $(NAME)
 
@@ -49,7 +53,7 @@ $(NAME): $(LIBFT) $(OBJ) $(HEADER)
 
 bonus: $(BONUS_EXEC)
 
-$(BONUS_EXEC): $(LIBFT) $(BONUS_OBJ) $(HEADER)
+$(BONUS_EXEC): $(LIBFT) $(BONUS_OBJ) $(BONUS_HEADER)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_EXEC) $(LIBFT)
 
 $(LIBFT):

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   operations_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 12:08:55 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/24 15:37:58 by cwon             ###   ########.fr       */
+/*   Created: 2025/01/24 11:00:19 by cwon              #+#    #+#             */
+/*   Updated: 2025/01/24 12:56:12 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef OPERATIONS_BONUS_H
+# define OPERATIONS_BONUS_H
 
-void	pa(t_pushswap *param, bool print)
-{
-	if (param->b->size)
-	{
-		if (!push(param->a, pop(param->b)))
-			return (flush_pushswap(param, true));
-		if (print)
-			ft_printf("pa\n");
-	}
-}
+# include "push_swap.h"
 
-void	pb(t_pushswap *param, bool print)
+typedef struct s_ops
 {
-	if (param->a->size)
-	{
-		if (!push(param->b, pop(param->a)))
-			return (flush_pushswap(param, true));
-		if (print)
-			ft_printf("pb\n");
-	}
-}
+	size_t	size;
+	t_list	*bottom;
+	t_list	*top;
+}	t_ops;
+
+bool	append_operation(t_ops *ops, char *str);
+t_ops	*new_operations(void);
+void	free_operations(t_ops *ops);
+
+#endif

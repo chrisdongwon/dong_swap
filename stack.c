@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:33:22 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/23 14:43:47 by cwon             ###   ########.fr       */
+/*   Updated: 2025/01/24 11:06:02 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ t_stack	*new_stack(void)
 void	free_stack(t_stack *stack)
 {
 	free_list(&(stack->top));
-	stack->bottom = 0;
-	stack->size = 0;
 	free(stack);
 }
 

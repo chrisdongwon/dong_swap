@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:42:09 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/23 19:20:06 by cwon             ###   ########.fr       */
+/*   Updated: 2025/01/24 15:40:37 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static void	tripartition(t_pushswap *param)
 	{
 		if (param->a->top->data < low_pivot)
 		{
-			pb(param);
-			rb(param);
+			pb(param, true);
+			rb(param, true);
 		}
 		else if (param->a->top->data < high_pivot)
-			pb(param);
+			pb(param, true);
 		else
-			ra(param);
+			ra(param, true);
 		count--;
 	}
 }
@@ -54,28 +54,28 @@ static void	tripartition(t_pushswap *param)
 static void	sort_three(t_pushswap *param)
 {
 	int	top;
-	int	mid;
-	int	bot;
+	int	middle;
+	int	bottom;
 
 	top = param->a->top->data;
-	mid = param->a->top->next->data;
-	bot = param->a->top->next->next->data;
-	if (top > mid && mid > bot && top > bot)
+	middle = param->a->top->next->data;
+	bottom = param->a->top->next->next->data;
+	if (top > middle && middle > bottom && top > bottom)
 	{
-		sa(param);
-		rra(param);
+		sa(param, true);
+		rra(param, true);
 	}
-	else if (top > mid && bot > mid && top > bot)
-		ra(param);
-	else if (mid > top && mid > bot && bot > top)
+	else if (top > middle && bottom > middle && top > bottom)
+		ra(param, true);
+	else if (middle > top && middle > bottom && bottom > top)
 	{
-		sa(param);
-		ra(param);
+		sa(param, true);
+		ra(param, true);
 	}
-	else if (top > mid && bot > mid && bot > top)
-		sa(param);
-	else if (mid > top && mid > bot && top > bot)
-		rra(param);
+	else if (top > middle && bottom > middle && bottom > top)
+		sa(param, true);
+	else if (middle > top && middle > bottom && top > bottom)
+		rra(param, true);
 }
 
 static void	greedy_insertion_sort(t_pushswap *param)
@@ -85,9 +85,9 @@ static void	greedy_insertion_sort(t_pushswap *param)
 
 	tripartition(param);
 	while (param->a->size > 3)
-		pb(param);
+		pb(param, true);
 	if (param->a->size == 2 && param->a->top->data > param->a->top->next->data)
-		sa(param);
+		sa(param, true);
 	if (param->a->size == 3)
 		sort_three(param);
 	while (param->b->size)
@@ -96,28 +96,24 @@ static void	greedy_insertion_sort(t_pushswap *param)
 		b_rotation = 0;
 		get_minimum_rotation(param, &a_rotation, &b_rotation);
 		adjust(param, &a_rotation, &b_rotation);
-		pa(param);
+		pa(param, true);
 	}
 	final_adjustment(param);
 }
 
-int	main(int argc, char **argv)
+void	push_swap(int argc, char **argv)
 {
 	t_pushswap	param;
 
-	if (argc > 1)
+	init_pushswap(&param, argc, argv);
+	if (!is_sorted(param.a->top))
 	{
-		init_pushswap(&param, argc, argv);
-		if (!is_sorted(param.a->top))
-		{
-			if (param.a->size == 2)
-				sa(&param);
-			else if (param.a->size == 3)
-				sort_three(&param);
-			else
-				greedy_insertion_sort(&param);
-		}
-		flush_pushswap(&param, false);
+		if (param.a->size == 2)
+			sa(&param, true);
+		else if (param.a->size == 3)
+			sort_three(&param);
+		else
+			greedy_insertion_sort(&param);
 	}
-	return (0);
+	flush_pushswap(&param, false);
 }

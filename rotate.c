@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:49 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/23 15:12:16 by cwon             ###   ########.fr       */
+/*   Updated: 2025/01/24 15:36:57 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,24 @@ static void	rotate(t_stack *stack)
 	}
 }
 
-void	ra(t_pushswap *param)
+void	ra(t_pushswap *param, bool print)
 {
 	rotate(param->a);
-	ft_printf("ra\n");
+	if (print)
+		ft_printf("ra\n");
 }
 
-void	rb(t_pushswap *param)
+void	rb(t_pushswap *param, bool print)
 {
 	rotate(param->b);
-	ft_printf("rb\n");
+	if (print)
+		ft_printf("rb\n");
 }
 
-void	rr(t_pushswap *param)
+void	rr(t_pushswap *param, bool print)
 {
 	rotate(param->a);
 	rotate(param->b);
-	ft_printf("rr\n");
+	if (print)
+		ft_printf("rr\n");
 }

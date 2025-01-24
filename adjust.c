@@ -6,7 +6,7 @@
 /*   By: cwon <cwon@student.42bangkok.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:39:25 by cwon              #+#    #+#             */
-/*   Updated: 2025/01/23 18:52:27 by cwon             ###   ########.fr       */
+/*   Updated: 2025/01/24 15:39:21 by cwon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	adjust_both(t_pushswap *param, int *a, int *b)
 {
 	while (*a && *b && (*a > 0 && *b > 0))
 	{
-		rr(param);
+		rr(param, true);
 		*a = *a - 1;
 		*b = *b - 1;
 	}
 	while (*a && *b && (*a < 0 && *b < 0))
 	{
-		rrr(param);
+		rrr(param, true);
 		*a = *a + 1;
 		*b = *b + 1;
 	}
@@ -34,12 +34,12 @@ static void	adjust_a(t_pushswap *param, int a)
 	{
 		if (a > 0)
 		{
-			ra(param);
+			ra(param, true);
 			a--;
 		}
 		else
 		{
-			rra(param);
+			rra(param, true);
 			a++;
 		}
 	}
@@ -51,12 +51,12 @@ static void	adjust_b(t_pushswap *param, int b)
 	{
 		if (b > 0)
 		{
-			rb(param);
+			rb(param, true);
 			b--;
 		}
 		else
 		{
-			rrb(param);
+			rrb(param, true);
 			b++;
 		}
 	}
@@ -78,12 +78,12 @@ void	final_adjustment(t_pushswap *param)
 	{
 		if (count > 0)
 		{
-			ra(param);
+			ra(param, true);
 			count--;
 		}
 		else
 		{
-			rra(param);
+			rra(param, true);
 			count++;
 		}
 	}
